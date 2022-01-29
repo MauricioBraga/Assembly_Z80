@@ -1,4 +1,5 @@
-; primeiro exemplo: imprimindo (Hello World) - Ramo MASTER
+; primeiro exemplo: imprimindo frase Hello World com uso da BIOS
+
 CHPUT:      	equ 0x00a2   ; imprime 1 caractere na tela
 CLS:		equ 0x00c3   ; limpa a tela
 
