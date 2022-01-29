@@ -1,3 +1,6 @@
+; demonstração de um loop infinito com uma instrução de desvio,
+; imprimindo várias vezes a frase "Ola Mundo!"
+
 CHPUT:		equ 0x00a2   ; imprime 1 caractere na tela
 CLS:		equ 0x00c3   ; limpa a tela
 

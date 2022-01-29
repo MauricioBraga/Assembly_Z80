@@ -1,4 +1,7 @@
-; programa que imprime fuas frases com o uso da função MOSTRATXT.
+; programa que imprime duas frases com o uso da função MOSTRATXT.
+; a função MOSTRATXT foi criada para evitar duplicação do código 
+; (ela é chamada duas vezes)
+
 CHPUT:		equ 0x00a2   ; imprime 1 caractere na tela
 CLS:	       	equ 0x00c3   ; limpa a tela
 
