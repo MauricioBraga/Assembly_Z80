@@ -1,0 +1,27 @@
+CHPUT:		equ 0x00a2   ; imprime 1 caractere na tela
+CLS:	       	equ 0x00c3   ; limpa a tela
+
+org 0xD000   ; Endereço de inicio do programa
+
+start:
+            	xor a
+            	call CLS	; limpa a tela, precisa do xor a antes de chamar a função.
+ 		ld hl, NOMEDOPRG
+            	call MOSTRATXT
+            	ld hl, DATA
+            	call MOSTRATXT
+            	ret
+            
+; entrada da funcao: endereco em HL.
+MOSTRATXT:   	
+		ld a, (hl)
+            	cp 0
+            	ret z
+            	call CHPUT
+            	inc hl
+            	jr MOSTRATXT
+
+NOMEDOPRG:	DB "Programa ASM modularizado",13,10,10,0
+DATA: 		DB "Data: 05/11/2018",13,10,10,0
+
+end start
