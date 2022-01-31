@@ -1,31 +1,33 @@
 ; programa que imprime duas frases com o uso da função MOSTRATXT.
-; a função MOSTRATXT foi criada para evitar duplicação do código 
+; a função IMPRIMETEXTO foi criada para evitar duplicação do código 
 ; (ela é chamada duas vezes)
 
 CHPUT:		equ 0x00a2   ; imprime 1 caractere na tela
 CLS:	       	equ 0x00c3   ; limpa a tela
 
-org 0xD000   ; Endereço de inicio do programa
+org 0xD000     ;endereço de inicio do programa
 
 start:
             	xor a
             	call CLS	; limpa a tela, precisa do xor a antes de chamar a função.
- 		ld hl, NOMEDOPRG
-            	call MOSTRATXT
+ 		ld hl, NOMEDOPRoGRAMA
+            	call IMPRIMETEXTO
             	ld hl, DATA
-            	call MOSTRATXT
+            	call IMPRIMETEXTO
             	ret
             
-; entrada da funcao: endereco em HL.
-MOSTRATXT:   	
+; função IMPRIMETEXTO
+; imprime na tela um texto terminado em NULL (0). 
+; entrada da funcao: endereco do início do texto em HL.
+IMPRIMETEXTO:   	
 		ld a, (hl)
             	cp 0
             	ret z
             	call CHPUT
             	inc hl
-            	jr MOSTRATXT
+            	jr IMPRIMETEXTO
 
-NOMEDOPRG:	DB "Programa ASM modularizado",13,10,10,0
+NOMEDOPRoGRAMA:	DB "Programa ASM modularizado",13,10,10,0
 DATA: 		DB "Data: 05/11/2018",13,10,10,0
 
 end start
